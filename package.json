@@ -1,0 +1,46 @@
+{
+  "name": "iw-react-dropdown",
+  "version": "1.0.0",
+  "description": "React Dropdown Menu Component",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "jest"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InstructionalWeb/iw-react-dropdown.git"
+  },
+  "keywords": [
+    "react",
+    "dropdown",
+    "menu"
+  ],
+  "author": "Instructional Web",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/InstructionalWeb/iw-react-dropdown/issues"
+  },
+  "homepage": "https://github.com/InstructionalWeb/iw-react-dropdown#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "jest": "^24.1.0",
+    "jest-dom": "^3.1.1",
+    "react-testing-library": "^5.8.0"
+  },
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "styled-components": "^4.1.3",
+    "uuid": "^3.3.2"
+  }
+}
