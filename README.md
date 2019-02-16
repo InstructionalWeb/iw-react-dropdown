@@ -39,6 +39,33 @@ const menuData = [
 ]
 ```
 
+## Usage 
+
+To render a simple menu with no dropdowns, you can just pass in the array of links
+
+```javascript
+import Dropdown from 'iw-react-dropdown'
+
+<Dropdown data={simpleArrayOfLinks} />
+```
+
+To render a menu of dropdowns is a little more complicated. In order to make the menu a little more flexible the rendering of the child items was moved into a render prop.
+
+```javascript
+import Dropdown from 'iw-react-dropdown'
+
+<Dropdown
+  data={menuData}
+  renderChildren={children =>
+    children.map(child => (
+      <li>
+        <a href={child.url}>{child.title}</a>
+      </li>
+    ))
+  }
+/>
+```
+
 ## Classes
 
 The component doesn't include much css by default, but does include these classes to style the menu as needed.
