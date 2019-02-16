@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from "react-testing-library";
-import DropdownMenu from './index';
-import { SSL_OP_TLS_BLOCK_PADDING_BUG } from 'constants';
+import DropdownMenu from '../src/index';
 
 const simpleMenu = [
   {
@@ -60,9 +59,13 @@ test('it renders a simple array of links', () => {
   const { getByText } = render(<DropdownMenu data={simpleMenu} />);
 
   expect(getByText("One Fish")).toBeInTheDocument();
+  expect(getByText("One Fish")).toHaveAttribute('class', 'iw-dropdown__menuLink');
   expect(getByText("Two Fish")).toBeInTheDocument();
+  expect(getByText("Two Fish")).toHaveAttribute('class', 'iw-dropdown__menuLink')
   expect(getByText("Red Fish")).toBeInTheDocument();
+  expect(getByText("Red Fish")).toHaveAttribute('class', 'iw-dropdown__menuLink')
   expect(getByText("Blue Fish")).toBeInTheDocument();
+  expect(getByText("Blue Fish")).toHaveAttribute('class', 'iw-dropdown__menuLink')
 });
 
 test('it renders children', () => {

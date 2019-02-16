@@ -9,6 +9,7 @@ const List = styled.ul`
   display: flex;
   list-style: none;
   margin: 0;
+  padding: 0;
 `;
 
 class DropdownMenu extends React.Component {
@@ -81,7 +82,7 @@ class DropdownMenu extends React.Component {
                   resetMenu={this.resetMenu}
                 />
               ) :
-                React.cloneElement(this.props.renderLink(item), { onClick: this.resetMenu })
+                React.cloneElement(this.props.renderLink(item), { onClick: this.resetMenu, className: 'iw-dropdown__menuLink' })
               }
             </li>
           ))}
@@ -93,7 +94,7 @@ class DropdownMenu extends React.Component {
 
 DropdownMenu.defaultProps = {
   data: [],
-  renderLink: (data) => <a href={data.url}>{data.title}</a>,
+  renderLink: (data) => <a className="iw-dropdown__menuLink" href={data.url}>{data.title}</a>,
   renderChildren: () => { }
 }
 
