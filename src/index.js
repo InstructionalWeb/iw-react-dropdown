@@ -82,7 +82,14 @@ class DropdownMenu extends React.Component {
                   resetMenu={this.resetMenu}
                 />
               ) :
-                React.cloneElement(this.props.renderLink(item), { onClick: this.resetMenu, className: 'iw-dropdown__menuLink' })
+                (function (thisElement, reset) {
+                  // This function takes an incoming element and add stuff
+                  // className needs to check to see if we have original classes
+                  return React.cloneElement(thisElement, {
+                    onClick: reset,
+                    className: `${!thisElement.props.className.split(' ').includes('iw-dropdown__menuLink') ? 'iw-dropdown__menuLink ' : ''}${thisElement.props.className}`
+                  })
+                })(this.props.renderLink(item), this.resetMenu)
               }
             </li>
           ))}
@@ -95,7 +102,24 @@ class DropdownMenu extends React.Component {
 DropdownMenu.defaultProps = {
   data: [],
   renderLink: (data) => <a className="iw-dropdown__menuLink" href={data.url}>{data.title}</a>,
-  renderChildren: () => { }
+  renderChildren: (children, toggleMenu, focusElement, blurElement) =>
+    children.map(child => (
+      <li className="iw-dropdown__subItem">
+        <a
+          href={child.url}
+          className="iw-dropdown__subLink"
+          onFocus={() => focusElement()}
+          onBlur={async () => {
+            const temp = await blurElement();
+            if (temp.length === 0) {
+              toggleMenu();
+            }
+          }}
+        >
+          {child.title}
+        </a>
+      </li>
+    ))
 }
 
 

@@ -1,6 +1,6 @@
 {
   "name": "iw-react-dropdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Dropdown Menu Component",
   "main": "dist/index.js",
   "scripts": {
